@@ -7,7 +7,7 @@ You need to have Deno v2.0.0 or later installed to run this repo.
 Start a dev server:
 
 ```
-$ deno task dev
+$ make dev
 ```
 
 ## Deploy
@@ -15,5 +15,14 @@ $ deno task dev
 Build production assets:
 
 ```
-$ deno task build
+$ make build
+```
+
+
+## Serve
+
+Serve test server with production codes:
+
+```
+$ make serve
 ```
