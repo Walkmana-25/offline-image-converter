@@ -14,6 +14,13 @@ function App() {
     })();
   }, []);
 
+  const worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
+  worker.onmessage = (e) => {
+    console.log("recieved from worker");
+    const result = e.data;
+    setOutputFile(result);
+  };
+
   return (
     <>
       <div>
@@ -32,7 +39,7 @@ function App() {
             if (inputFile) {
               // const output = await convertImage(inputFile)
               // setOutputFile(output)
-              setOutputFile(inputFile)
+              worker.postMessage(inputFile);
             }
           }}
         >
