@@ -2,7 +2,7 @@ import './App.css'
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 // @deno-types="./image-converter/pkg/image_converter.d.ts"
-import init, {greet} from "./image-converter/pkg"
+import init, {greet} from "../image-converter/pkg"
 
 function App() {
   const [count, setCount] = useState(0)
