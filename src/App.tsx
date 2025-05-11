@@ -7,12 +7,6 @@ function App() {
   const [inputFile, setInputFile] = useState<File | null>(null)
   const [outputFile, setOutputFile] = useState<File | null>(null)
 
-  const worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
-  worker.onmessage = (e) => {
-    console.log("recieved from worker");
-    const result = e.data;
-    setOutputFile(result);
-  };
 
   return (
     <>
@@ -32,6 +26,12 @@ function App() {
             if (inputFile) {
               // const output = await convertImage(inputFile)
               // setOutputFile(output)
+              const worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
+              worker.onmessage = (e) => {
+                console.log("recieved from worker");
+                const result = e.data;
+                setOutputFile(result);
+              };
               worker.postMessage(inputFile);
             }
           }}

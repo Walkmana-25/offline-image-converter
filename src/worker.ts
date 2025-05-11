@@ -13,4 +13,5 @@ onmessage = async function(ev: MessageEvent) {
 
     console.log('Convert End')
     postMessage(output_file);
+    terminate();
 }
