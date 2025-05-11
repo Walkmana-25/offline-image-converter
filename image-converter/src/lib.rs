@@ -23,5 +23,7 @@ extern "C" {
 #[wasm_bindgen]
 pub fn convert_image(file: Uint8Array) -> Result<Uint8Array, JsValue> {
     // Convert Image
-    Ok(file)
+    let image = io::input_image(file)?;
+    let output = io::output_image(image)?;
+    Ok(output)
 }
