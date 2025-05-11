@@ -1,18 +1,11 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
-// @deno-types="./image-converter/pkg/image_converter.d.ts"
-import init, {greet} from "../image-converter/pkg"
 
 function App() {
   const [count, setCount] = useState(0)
   const [inputFile, setInputFile] = useState<File | null>(null)
   const [outputFile, setOutputFile] = useState<File | null>(null)
-  useEffect(() => {
-    (async () => {
-      await init();
-    })();
-  }, []);
 
   const worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
   worker.onmessage = (e) => {
