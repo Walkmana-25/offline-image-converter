@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     (async () => {
       await init();
-      greet();
     })();
   }, []);
 
