@@ -3,6 +3,7 @@ import init, {convert_image} from "../image-converter/pkg"
 // worker.js
 onmessage = async function(ev: MessageEvent) {
     await init();
+    console.time('worker');
     console.log('Convert start');
     
     const file_name = ev.data.name;
@@ -13,5 +14,6 @@ onmessage = async function(ev: MessageEvent) {
 
     console.log('Convert End')
     postMessage(output_file);
-    terminate();
+    console.timeEnd('worker');
+
 }
