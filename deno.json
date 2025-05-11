@@ -18,6 +18,8 @@
     "@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.3.4",
     "react": "npm:react@^19.0.0",
     "react-dom": "npm:react-dom@^19.0.0",
-    "vite": "npm:vite@^6.1.1"
+    "vite": "npm:vite@^6.1.1",
+    "vite-plugin-top-level-await": "npm:vite-plugin-top-level-await@^1.5.0",
+    "vite-plugin-wasm": "npm:vite-plugin-wasm@^3.4.1"
   }
 }

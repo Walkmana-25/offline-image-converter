@@ -1,9 +1,17 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
+// @deno-types="./image-converter/pkg/image_converter.d.ts"
+import init, {greet} from "./image-converter/pkg"
 
 function App() {
   const [count, setCount] = useState(0)
+  useEffect(() => {
+    (async () => {
+      await init();
+      greet();
+    })();
+  }, []);
 
   return (
     <>
@@ -18,7 +26,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button type="button" onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
