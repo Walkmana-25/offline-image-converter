@@ -1,6 +1,8 @@
 mod utils;
+mod io;
 
 use wasm_bindgen::prelude::*;
+use js_sys::Uint8Array;
 
 #[wasm_bindgen(start)]
 pub fn main() {
@@ -18,3 +20,8 @@ extern "C" {
     fn alert(s: &str);
 }
 
+#[wasm_bindgen]
+pub fn convert_image(file: Uint8Array) -> Result<Uint8Array, JsValue> {
+    // Convert Image
+    Ok(file)
+}
