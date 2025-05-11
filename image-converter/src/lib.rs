@@ -1,5 +1,6 @@
 mod utils;
 mod io;
+mod convert;
 
 use wasm_bindgen::prelude::*;
 use js_sys::Uint8Array;
@@ -24,6 +25,16 @@ extern "C" {
 pub fn convert_image(file: Uint8Array) -> Result<Uint8Array, JsValue> {
     // Convert Image
     let image = io::input_image(file)?;
-    let output = io::output_image(image)?;
-    Ok(output)
+    match convert::convert_image(image) {
+        Ok(image) => {
+            let output = io::output_image(image)?;
+            Ok(output)
+        }
+        Err(e) => {
+            // Handle the error
+            let error_message = format!("Error converting image: {}", e);
+            alert(&error_message);
+            Err(JsValue::from_str(&error_message))
+        }
+    }
 }
